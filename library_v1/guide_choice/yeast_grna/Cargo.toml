@@ -1,0 +1,20 @@
+[package]
+name = "yeast_grna"
+version = "0.1.0"
+authors = ["Nick Ingolia <ingolia@berkeley.edu>"]
+
+[dependencies]
+bio = "0.22"
+rust-htslib = "0.24"
+itertools = "*"
+csv = "*"
+
+[profile.release]
+opt-level = 3
+
+[profile.dev]
+opt-level = 0
+
+[[bin]]
+name = "yeast_grna"
+path = "src/main.rs"
