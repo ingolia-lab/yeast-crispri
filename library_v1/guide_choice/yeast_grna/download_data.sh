@@ -1,11 +1,15 @@
 #!/bin/bash
 
-## http://api.genome.ucsc.edu/list/tracks?genome=sacCer3
-## http://api.genome.ucsc.edu/list/schema?genome=sacCer3;track=sgdGene
-## http://api.genome.ucsc.edu/getData/track?genome=sacCer3;track=sgdGene
-## http://api.genome.ucsc.edu/getData/track?genome=sacCer3;track=sgdGene;jsonOutputArrays=1
 set -e
 set -x
+
+if [[ -z "$1" ]];
+then
+    echo "Usage: $0 <DATADIR>"
+    exit 1
+fi
+
+export DATADIR="$1"
 
 if [[ ! -d "${DATADIR}" ]];
 then
@@ -144,7 +148,14 @@ OCCFILES="A.occ.wig B.occ.wig"
 
 if [[ ! -e "${GZFILE}" ]];
 then
+    set +e
     curl 'https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE66386&format=file&file=GSE66386%5Fall%5Focc%2Ebw%2Etar%2Egz' --output "${GZFILE}"
+    set -e
+    if [[ ! -e "${GZFILE}" ]];
+    then
+	echo "Failed to download ${GZFILE}"
+	exit 1
+    fi
 else
     echo "${GZFILE} exists, not downloading..."
 fi

@@ -52,23 +52,24 @@ fn main() {
     }
 
     let base_dir = path::PathBuf::from(&argv[1]);
+    let data_dir = base_dir.join("data");
     let work_dir = base_dir.join("work");
     let config = Config {
-        genome_fasta: base_dir.join("sacCer3.fa"),
+        genome_fasta: data_dir.join("sacCer3.fa"),
         work_dir: work_dir.clone(),
         unique_config: UniqueConfig {
-            genome_bt2: base_dir.join("sacCer3").to_string_lossy().into_owned(),
+            genome_bt2: data_dir.join("sacCer3").to_string_lossy().into_owned(),
             work_dir: work_dir.clone(),
         },
         atac_config: AtacConfig {
-            atac_wigs: vec![ base_dir.join("GSE66386/A.occ.wig"),
-                             base_dir.join("GSE66386/B.occ.wig"),],
+            atac_wigs: vec![ data_dir.join("GSE66386/A.occ.wig"),
+                             data_dir.join("GSE66386/B.occ.wig"),],
             work_dir: work_dir.clone(),
         },
         gene_config: GeneConfig {
-            mtif_filename: base_dir.join("S2_tcd_mTIFAnno2.txt"),
-            cds_filename: base_dir.join("sacCer3.bed"),
-            dubious_filename: base_dir.join("dubious.txt"),
+            mtif_filename: data_dir.join("S2_tcd_mTIFAnno2.txt"),
+            cds_filename: data_dir.join("sacCer3.bed"),
+            dubious_filename: data_dir.join("dubious.txt"),
             work_dir: work_dir.clone(),
         },
         target_choice_config: TargetChoiceConfig {
