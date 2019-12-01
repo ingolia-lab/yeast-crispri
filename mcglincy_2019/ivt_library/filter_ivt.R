@@ -2,17 +2,14 @@ library("png")
 library("RColorBrewer")
 options(stringsAsFactors=FALSE)
 
-datadir <- Sys.getenv("DATADIR")
+workdir <- Sys.getenv("WORKDIR")
+figuredir <- Sys.getenv("FIGUREDIR")
 
 ## All barcodes
-counts <- read.delim(sprintf("%s/ivt_all.txt", datadir), row.names=1)
+counts <- read.delim(sprintf("%s/ivt_all.txt", workdir), row.names=1)
 ## Discard junk on column names
 colnames(counts) <- sub(".nbhd.count.txt", "", colnames(counts))
 colnames(counts) <- sub(".*[.]", "", colnames(counts))
-
-write.table(table(2**floor(log2(rowSums(counts))), rowSums(counts > 0)),
-            file=sprintf("%s/ivt_summary.txt", datadir), row.names=TRUE, col.names=TRUE,
-            sep="\t", quote=FALSE)
 
 ## Barcodes present in >1 sample and >32 reads total
 good <- counts[rowSums(counts > 0) > 1 & rowSums(counts) > 32,]
@@ -24,7 +21,7 @@ isXho <- (grepl("CTCGAG", row.names(good)) | grepl("^CGAG", row.names(good)) | g
 xho <- good[isXho,]
 noxho <- good[!isXho,]
 
-write.table(noxho, file=sprintf("%s/ivt_good.txt", datadir), row.names=TRUE, sep="\t", quote=FALSE)
+write.table(noxho, file=sprintf("%s/ivt_good.txt", workdir), row.names=TRUE, sep="\t", quote=FALSE)
 
 ## Looking at XhoI drop-outs
 
@@ -41,7 +38,7 @@ noxhocol <- brewer.pal(3, "Greys")[[3]]
 ## We use par(mar=...) and plot(...) rather than plot.window(mar=...) and points(...)
 
 ## C replicate
-pdf(sprintf("%s/ivt_vs_pcr_c.pdf", datadir), useDingbats=FALSE, width=5, height=5)
+pdf(sprintf("%s/ivt_vs_pcr_c.pdf", figuredir), useDingbats=FALSE, width=5, height=5)
 plot(x = pmax(0, log10(noxho$pcr_c)),
      y = pmax(0, log10(noxho$ivt_c)),
      type="n",
@@ -55,7 +52,7 @@ gy <- grconvertY(coords[3:4], "user", "inches")
 width <- max(gx) - min(gx)
 height <- max(gy) - min(gy)
 
-pointsfile <- sprintf("%s/ivt_repl_points.png", datadir)
+pointsfile <- sprintf("%s/ivt_repl_points.png", workdir)
 png(pointsfile, width=width, height=height, units="in", res=300, bg="transparent")
 par(mar=c(0,0,0,0))
 plot(x = pmax(0, log10(noxho$pcr_c)),
@@ -82,7 +79,7 @@ dev.off()
 
 ## D replicate
 
-pdf(sprintf("%s/ivt_vs_pcr_d.pdf", datadir), useDingbats=FALSE, width=5, height=5)
+pdf(sprintf("%s/ivt_vs_pcr_d.pdf", figuredir), useDingbats=FALSE, width=5, height=5)
 plot(x = pmax(0, log10(noxho$pcr_d)),
      y = pmax(0, log10(noxho$ivt_d)),
      type="n",
@@ -96,7 +93,7 @@ gy <- grconvertY(coords[3:4], "user", "inches")
 width <- max(gx) - min(gx)
 height <- max(gy) - min(gy)
 
-pointsfile <- sprintf("%s/ivt_repl_points.png", datadir)
+pointsfile <- sprintf("%s/ivt_repl_points.png", workdir)
 png(pointsfile, width=width, height=height, units="in", res=300, bg="transparent")
 par(mar=c(0,0,0,0))
 plot(x = pmax(0, log10(noxho$pcr_d)),

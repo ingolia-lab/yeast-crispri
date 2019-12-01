@@ -1,4 +1,8 @@
 options(stringsAsFactors=FALSE)
+
+workdir <- Sys.getenv("WORKDIR")
+figuredir <- Sys.getenv("FIGUREDIR")
+
 library(png)
 library("RColorBrewer")
 
@@ -6,10 +10,8 @@ l10Decades <- function(xs) {
     log10(c(sapply(xs, function(x) { seq(2,9)*(10**x) })))
 }
 
-datadir <- Sys.getenv("DATADIR")
-
 ## Good barcodes
-x <- read.delim(sprintf("%s/ivt_good.txt", datadir), row.names=1)
+x <- read.delim(sprintf("%s/ivt_good.txt", workdir), row.names=1)
 
 pal <- brewer.pal(4, "PRGn")
 ivtcolor <- pal[[1]]
@@ -26,7 +28,7 @@ repls <- data.frame(row.names = row.names(x),
                     pcrC = log10(pmax(0.8, x$pcr_c)),
                     pcrD = log10(pmax(0.8, x$pcr_d)))
 
-pdf(sprintf("%s/ivt_repl.pdf", datadir), useDingbats=FALSE, width=5, height=5)
+pdf(sprintf("%s/ivt_repl.pdf", figuredir), useDingbats=FALSE, width=5, height=5)
 plot(x = repls$ivtC, y = repls$ivtD, type="n", 
      xlim=log10(c(0.7, 50000)), ylim=log10(c(0.7, 50000)),
      axes=FALSE,
@@ -38,7 +40,7 @@ gy <- grconvertY(coords[3:4], "user", "inches")
 width <- max(gx) - min(gx)
 height <- max(gy) - min(gy)
 
-pointsfile <- sprintf("%s/ivt_repl_points.png", datadir)
+pointsfile <- sprintf("%s/ivt_repl_points.png", workdir)
 png(pointsfile, width=width, height=height, units="in", res=300, bg="transparent")
 par(mar=c(0,0,0,0))
 plot(x = repls$ivtC, y = repls$ivtD,
@@ -55,7 +57,7 @@ axis(side=2, at=l10Decades(seq(0,3)), labels=F, tcl=-0.25)
 title(main="IVT-RT", col.main=ivtcolor)
 dev.off()
 
-pdf(sprintf("%s/pcr_repl.pdf", datadir), useDingbats=FALSE, width=5, height=5)
+pdf(sprintf("%s/pcr_repl.pdf", figuredir), useDingbats=FALSE, width=5, height=5)
 plot(x = repls$pcrC, y = repls$pcrD, type="n", 
      xlim=log10(c(0.7, 50000)), ylim=log10(c(0.7, 50000)),
      axes=FALSE,
@@ -67,7 +69,7 @@ gy <- grconvertY(coords[3:4], "user", "inches")
 width <- max(gx) - min(gx)
 height <- max(gy) - min(gy)
 
-pointsfile <- sprintf("%s/pcr_repl_points.png", datadir)
+pointsfile <- sprintf("%s/pcr_repl_points.png", workdir)
 png(pointsfile, width=width, height=height, units="in", res=300, bg="transparent")
 par(mar=c(0,0,0,0))
 plot(x = repls$pcrC, y = repls$pcrD,
@@ -99,7 +101,7 @@ ivt <- hist(pmin(3, pmax(-3, xhi$ivtL2R - median(xhi$ivtL2R, na.rm=TRUE))),
 pcr <- hist(pmin(3, pmax(-3, xhi$pcrL2R - median(xhi$pcrL2R, na.rm=TRUE))),
             breaks=rbreaks, plot=FALSE)
 
-pdf(sprintf("%s/repl_hist.pdf", datadir), width=5, height=5, useDingbats=FALSE)
+pdf(sprintf("%s/repl_hist.pdf", figuredir), width=5, height=5, useDingbats=FALSE)
 plot(ivt$mids, ivt$density,
      type="l", lwd=2, col=ivtcolor,
      xlim=c(-3,3), ylim=c(0,2),
@@ -133,7 +135,7 @@ ddsPcr <- DESeqDataSetFromMatrix(countData = countsPcr,
 ddsPcr <- estimateSizeFactors(ddsPcr)
 ddsPcr <- estimateDispersions(ddsPcr)
 
-pdf(sprintf("%s/compare_cv.pdf", datadir), useDingbats=FALSE, width=6, height=4)
+pdf(sprintf("%s/compare_cv.pdf", figuredir), useDingbats=FALSE, width=6, height=4)
 avgs <- 10^seq(log10(10), log10(5000), length.out=250)
 plot(x=log10(avgs),
      y=log10(sqrt(dispersionFunction(ddsIvt)(avgs))),

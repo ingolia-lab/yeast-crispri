@@ -4,7 +4,8 @@ set -x
 set -e
 
 ## Configurable file paths
-DATADIR="./work"
+WORKDIR="./work"
+FIGUREDIR="./figures"
 FASTQDIR="/mnt/ingolialab/FastQ/181129_50SR_HS4KB/Meacham/"
 
 BARCODE_ASSIGN_DIR="../../barcode_v1_181005/assignment/barcode-assign-0.1"
@@ -23,7 +24,8 @@ then
     exit 1
 fi
 
-mkdir -p "${DATADIR}"
+mkdir -p "${WORKDIR}"
+mkdir -p "${FIGUREDIR}"
 
 COUNT_LIST=""
 
@@ -31,14 +33,14 @@ for FASTQFILE in `cut -f1 samples.txt`
 do
     SAMPLE=`grep -F ${FASTQFILE} samples.txt | cut -f2`
 
-    BASE="${DATADIR}/${SAMPLE}"
+    BASE="${WORKDIR}/${SAMPLE}"
     COUNT="${BASE}-nbhd-count.txt"
     
     if [[ ! -e "${COUNT}" ]];
     then
         cutadapt -a "${CONSTANT}" \
          	       --minimum-length 10 --discard-untrimmed \
-        	       "${FASTQDIR}/${FASTQFILE}" 2>"${DATADIR}/${SAMPLE}-cutadapt.txt" \
+        	       "${FASTQDIR}/${FASTQFILE}" 2>"${WORKDIR}/${SAMPLE}-cutadapt.txt" \
          	  | "${BC_COUNT}"  -f - -o "${BASE}-nbhd-count.txt" -n "${BASE}" &
         sleep 1
     else
@@ -50,9 +52,10 @@ done
 
 wait
 
-"${BC_TABULATE}" --minsamples 2 -o "${DATADIR}/ivt_all.txt" ${COUNT_LIST}
+"${BC_TABULATE}" --minsamples 2 -o "${WORKDIR}/ivt_all.txt" ${COUNT_LIST}
 
-export DATADIR
+export WORKDIR
+export FIGUREDIR
 R --no-save < filter_ivt.R
 R --no-save < analyze_ivt.R
 
