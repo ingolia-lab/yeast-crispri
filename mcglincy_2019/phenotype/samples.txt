@@ -1,0 +1,10 @@
+0404_L1_S5_R1_001.fastq.gz	d0L1
+0404_R1_S6_R1_001.fastq.gz	d0R1
+0405_L1_S7_R1_001.fastq.gz	d1L1
+0405_R1_S8_R1_001.fastq.gz	d1R1
+0406_L1_S9_R1_001.fastq.gz	d2L1
+0406_R1_S10_R1_001.fastq.gz	d2R1
+0407_L1_S11_R1_001.fastq.gz	d3L1
+0407_L2_S12_R1_001.fastq.gz	d3L2
+0407_R1_S13_R1_001.fastq.gz	d3R1
+0407_R2_S14_R1_001.fastq.gz	d3R2
