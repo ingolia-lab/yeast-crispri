@@ -1,0 +1,5 @@
+Good	227894
+Bad Match	26674
+No Match	1555
+Mixed	13636
+Too Few	43717
