@@ -1,0 +1,6 @@
+10-22bcode_amp_RT_A_S1_L001_R1_001.fastq.gz	ivt_a
+10-22bcode_amp_RT_B_S2_L001_R1_001.fastq.gz	ivt_b
+10-22bcode_amp_RT_C_S3_L001_R1_001.fastq.gz	ivt_c
+10-22bcode_amp_RT_D_S4_L001_R1_001.fastq.gz	ivt_d
+10-24_C_amp_R2_PCR_S7_L001_R1_001.fastq.gz	pcr_c
+10-24_D_amp_R2_PCR_S8_L001_R1_001.fastq.gz	pcr_d
