@@ -1,0 +1,20 @@
+269759 assigned barcodes
+227894 good assignments (84.5 %)
+26674 erroneous (9.9 %)
+13636 heterogeneous (5.1 %)
+1555 mysterious (0.6 %)
+44579 guides assigned to barcodes
+344 empty-guide barcodes
+35272 guides with >1 barcodes
+   nbc nguides
+1    1   44579
+2    2   35272
+3    3   27253
+4    4   20762
+5    5   15686
+6    6   11837
+7    7    8866
+8    8    6729
+9    9    5061
+10  10    3881
+11  11    2983
