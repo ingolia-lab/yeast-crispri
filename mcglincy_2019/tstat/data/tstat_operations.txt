@@ -1,0 +1,8 @@
+Left is 202 ml
+Right is 206 ml
+
+Left is 25.5 ml / 100 seconds
+Right is 24.4 ml / 100 seconds
+
+Left OD is 0.444
+Right OD is 0.483
