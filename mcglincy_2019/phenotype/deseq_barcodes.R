@@ -68,7 +68,7 @@ guideres$Gene1 <- ifelse(is.na(guideres$Gene1), guideres$Yorf1, guideres$Gene1)
 guideres <- guideres[,c("lfcMean", "lfcSE", "nbc", "Gene1", "Yorf1", "Offset1", "StartType1",
                         "Yorf2", "Offset2", "StartType2", "Yorfs", "TargetLoc", "Oligo")]
 
-write.csv(guideres, file=sprintf("%s/nizm005-guide-deseq.csv", workdir))
+write.csv(guideres, file=sprintf("%s/nizm005-guide-deseq.csv", figuredir))
 
 ## DESeq2 estimates are log2 fold-change in 1 (wild-type) generation
 ## selective coefficient s is 2^(log2 fold-change)

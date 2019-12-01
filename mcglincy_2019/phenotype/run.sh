@@ -72,11 +72,18 @@ else
     echo "\"${WORKDIR}/nizm005-assigned.txt\" exists, skipping analyze_barcodes.R"
 fi
 
-if [[ ! -e "${WORKDIR}/nizm005-guide-deseq.csv" ]];
+if [[ ! -e "${FIGUREDIR}/nizm005-guide-deseq.csv" ]];
 then
     R --no-save < deseq_barcodes.R
 else
-    echo "\"${WORKDIR}/nizm005-guide-deseq.csv\" exists, skipping deseq_barcodes.R"
+    echo "\"${FIGUREDIR}/nizm005-guide-deseq.csv\" exists, skipping deseq_barcodes.R"
 fi
 
-R --no-save < analyze_fitness.R
+if [[ ! -e "${WORKDIR}/nizm005-yorf-deseq.csv" ]];
+then
+    R --no-save < analyze_fitness.R
+else
+    echo "\"${WORKDIR}/nizm005-yorf-deseq.csv\" exists, skipping analyze_fitness.R"
+fi
+
+R --no-save < analyze_guides.R

@@ -41,7 +41,7 @@ cat(sprintf("  %d non-essential genes with clean guide choices\n", length(cleanV
 bcDeseqFile <- sprintf("%s/nizm005-barcode-deseq.csv", workdir)
 bcres <- read.csv(bcDeseqFile, row.names=1)
 
-guideDeseqFile <- sprintf("%s/nizm005-guide-deseq.csv", workdir)
+guideDeseqFile <- sprintf("%s/nizm005-guide-deseq.csv", figuredir)
 guideres <- read.csv(guideDeseqFile, row.names=1)
 
 breaks <- seq(-1.35, 0.45, 0.05)

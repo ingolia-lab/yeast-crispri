@@ -1,0 +1,4 @@
+1159 essential genes
+3498 genes with "clean" (unique, specific, TSS-based) guide choices
+  644 essential genes with clean guide choices
+  2877 non-essential genes with clean guide choices
