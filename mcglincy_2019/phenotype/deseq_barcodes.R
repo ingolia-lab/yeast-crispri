@@ -70,6 +70,15 @@ guideres <- guideres[,c("lfcMean", "lfcSE", "nbc", "Gene1", "Yorf1", "Offset1", 
 
 write.csv(guideres, file=sprintf("%s/nizm005-guide-deseq.csv", figuredir))
 
+guideTable <- guideToYorfs[,c("Guide", "TargetLoc", "Yorf1", "Offset1", "StartType1", "Yorfs", "Oligo")]
+guideTable$Gene1 <- sgd[match(guideTable$Yorf1, sgd$name), "gene"]
+guideTable$Gene1 <- ifelse(is.na(guideTable$Gene1), guideTable$Yorf1, guideTable$Gene1)
+guideTable$lfcMean <- round(guideres[match(row.names(guideres), guideTable$Guide), "lfcMean"], digits=2)
+guideTable$lfcSE <- round(guideres[match(row.names(guideres), guideTable$Guide), "lfcSE"], digits=2)
+guideTable$nbc <- round(guideres[match(row.names(guideres), guideTable$Guide), "nbc"], digits=2)
+
+write.csv(guideTable, file=sprintf("%s/guide-table-nizm005-deseq.csv", figuredir))
+
 ## DESeq2 estimates are log2 fold-change in 1 (wild-type) generation
 ## selective coefficient s is 2^(log2 fold-change)
 ##   or alternately lg(s) is log2 fold-change
