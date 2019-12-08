@@ -86,4 +86,11 @@ else
     echo "\"${WORKDIR}/nizm005-yorf-deseq.csv\" exists, skipping analyze_fitness.R"
 fi
 
+if [[ ! -e "${FIGUREDIR}/guide-table-nizm005-deseq.csv" ]];
+then
+    R --no-save < tabulate_guides.R
+else
+    echo "\"${FIGUREDIR}/guide-table-nizm005-deseq.csv\" exists, skipping tabulate_guides.R"
+fi
+
 R --no-save < analyze_guides.R
