@@ -1,87 +1,144 @@
-481 essential genes with clean guide choices and strong phenotype
-4564 guides against essential, clean, strong phenotype genes
-2680 guides analyzed in DESeq
+Sick limit -0.38
+1967 guides in efficacy analysis
+621 essential genes with clean promoters
+3480 guides holdout efficacy test
+  1491 guides active
+AUC Full: 0.788
+AUC FullStrand: 0.784
+AUC NoODM: 0.779
+AUC NoSeq: 0.748
+AUC Offset: 0.740
+AUC OffsetStrand: 0.743
+Analysis of Deviance Table
 
-Call:
-lm(formula = seenGuides$fitness ~ seenGuides$nt01 + seenGuides$nt02 + 
-    seenGuides$nt03 + seenGuides$nt04 + seenGuides$nt05 + seenGuides$nt06 + 
-    seenGuides$nt07 + seenGuides$nt08 + seenGuides$nt09 + seenGuides$nt10 + 
-    seenGuides$nt11 + seenGuides$nt12 + seenGuides$nt13 + seenGuides$nt14 + 
-    seenGuides$nt15 + seenGuides$nt16 + seenGuides$nt17 + seenGuides$nt18 + 
-    seenGuides$nt19 + seenGuides$nt20)
+Model: binomial, link: logit
 
-Residuals:
-     Min       1Q   Median       3Q      Max 
--0.78075 -0.27574  0.04969  0.26271  0.72856 
+Response: active
 
-Coefficients:
-                   Estimate Std. Error t value Pr(>|t|)    
-(Intercept)      -0.5917494  0.0319659 -18.512  < 2e-16 ***
-seenGuides$nt01C  0.0477862  0.0184850   2.585 0.009788 ** 
-seenGuides$nt01G  0.0168891  0.0187144   0.902 0.366893    
-seenGuides$nt01T  0.0753820  0.0152223   4.952 7.81e-07 ***
-seenGuides$nt02C -0.0305770  0.0189270  -1.616 0.106317    
-seenGuides$nt02G -0.0296845  0.0185510  -1.600 0.109684    
-seenGuides$nt02T -0.0523434  0.0152734  -3.427 0.000619 ***
-seenGuides$nt03C  0.0181618  0.0187416   0.969 0.332604    
-seenGuides$nt03G  0.0001150  0.0189997   0.006 0.995170    
-seenGuides$nt03T  0.0265563  0.0154190   1.722 0.085131 .  
-seenGuides$nt04C -0.0024096  0.0185321  -0.130 0.896558    
-seenGuides$nt04G -0.0317002  0.0186484  -1.700 0.089271 .  
-seenGuides$nt04T -0.0194909  0.0155017  -1.257 0.208743    
-seenGuides$nt05C -0.0218932  0.0186792  -1.172 0.241277    
-seenGuides$nt05G  0.0352630  0.0185283   1.903 0.057124 .  
-seenGuides$nt05T  0.0105158  0.0155769   0.675 0.499681    
-seenGuides$nt06C  0.0006971  0.0183007   0.038 0.969618    
-seenGuides$nt06G -0.0166696  0.0187309  -0.890 0.373575    
-seenGuides$nt06T  0.0184817  0.0155597   1.188 0.235022    
-seenGuides$nt07C -0.0359074  0.0188785  -1.902 0.057277 .  
-seenGuides$nt07G  0.0036030  0.0184975   0.195 0.845578    
-seenGuides$nt07T  0.0179818  0.0155486   1.156 0.247586    
-seenGuides$nt08C -0.0229064  0.0189246  -1.210 0.226234    
-seenGuides$nt08G -0.0171453  0.0185586  -0.924 0.355650    
-seenGuides$nt08T  0.0361688  0.0154160   2.346 0.019041 *  
-seenGuides$nt09C  0.0172070  0.0188181   0.914 0.360600    
-seenGuides$nt09G -0.0162792  0.0182852  -0.890 0.373388    
-seenGuides$nt09T  0.0376548  0.0155665   2.419 0.015633 *  
-seenGuides$nt10C  0.0142751  0.0190003   0.751 0.452531    
-seenGuides$nt10G  0.0164022  0.0182817   0.897 0.369698    
-seenGuides$nt10T  0.0495794  0.0154212   3.215 0.001320 ** 
-seenGuides$nt11C  0.0164603  0.0183031   0.899 0.368568    
-seenGuides$nt11G  0.0160850  0.0186795   0.861 0.389260    
-seenGuides$nt11T  0.0861348  0.0155817   5.528 3.56e-08 ***
-seenGuides$nt12C -0.0025909  0.0189483  -0.137 0.891249    
-seenGuides$nt12G -0.0218065  0.0183411  -1.189 0.234569    
-seenGuides$nt12T  0.0228452  0.0156167   1.463 0.143622    
-seenGuides$nt13C  0.0379198  0.0190862   1.987 0.047053 *  
-seenGuides$nt13G -0.0132007  0.0182893  -0.722 0.470499    
-seenGuides$nt13T  0.0370399  0.0155356   2.384 0.017188 *  
-seenGuides$nt14C  0.0708005  0.0190116   3.724 0.000200 ***
-seenGuides$nt14G  0.0233401  0.0183213   1.274 0.202800    
-seenGuides$nt14T  0.0304495  0.0157603   1.932 0.053462 .  
-seenGuides$nt15C  0.0088701  0.0187914   0.472 0.636943    
-seenGuides$nt15G  0.0249513  0.0181309   1.376 0.168884    
-seenGuides$nt15T  0.0467190  0.0155340   3.008 0.002659 ** 
-seenGuides$nt16C  0.0415445  0.0183422   2.265 0.023596 *  
-seenGuides$nt16G  0.0326697  0.0184481   1.771 0.076694 .  
-seenGuides$nt16T  0.0541526  0.0157385   3.441 0.000589 ***
-seenGuides$nt17C  0.0299614  0.0191007   1.569 0.116862    
-seenGuides$nt17G -0.0352844  0.0182304  -1.935 0.053039 .  
-seenGuides$nt17T  0.0292656  0.0156125   1.875 0.060972 .  
-seenGuides$nt18C -0.0115392  0.0183994  -0.627 0.530614    
-seenGuides$nt18G  0.0102696  0.0184876   0.555 0.578610    
-seenGuides$nt18T  0.0755608  0.0153391   4.926 8.91e-07 ***
-seenGuides$nt19C -0.0225730  0.0187986  -1.201 0.229946    
-seenGuides$nt19G  0.0214532  0.0176766   1.214 0.224991    
-seenGuides$nt19T -0.0146475  0.0157269  -0.931 0.351751    
-seenGuides$nt20C  0.0773349  0.0188690   4.099 4.28e-05 ***
-seenGuides$nt20G -0.0415804  0.0175964  -2.363 0.018200 *  
-seenGuides$nt20T  0.0484918  0.0156155   3.105 0.001921 ** 
+Terms added sequentially (first to last)
+
+
+                 Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
+NULL                              1966     2526.1              
+OffsetPred        1   345.17      1965     2180.9 < 2.2e-16 ***
+OffsetStrandPred  1    36.82      1964     2144.1 1.297e-09 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Analysis of Deviance Table
 
-Residual standard error: 0.317 on 2619 degrees of freedom
-Multiple R-squared:  0.1314,	Adjusted R-squared:  0.1115 
-F-statistic: 6.601 on 60 and 2619 DF,  p-value: < 2.2e-16
+Model: binomial, link: logit
 
-fitness vs ATAC = 0.107
+Response: active
+
+Terms added sequentially (first to last)
+
+
+                 Df Deviance Resid. Df Resid. Dev Pr(>Chi)    
+NULL                              1966     2526.1             
+OffsetStrandPred  1   381.18      1965     2144.9   <2e-16 ***
+OffsetPred        1     0.81      1964     2144.1   0.3669    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Analysis of Deviance Table
+
+Model: binomial, link: logit
+
+Response: active
+
+Terms added sequentially (first to last)
+
+
+                 Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
+NULL                              1953     2511.3              
+OffsetStrandPred  1   379.71      1952     2131.6 < 2.2e-16 ***
+ATAC              1    10.62      1951     2120.9 0.0011217 ** 
+ODM               1    11.28      1950     2109.7 0.0007837 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Analysis of Deviance Table
+
+Model: binomial, link: logit
+
+Response: active
+
+Terms added sequentially (first to last)
+
+
+                 Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
+NULL                              1953     2511.3              
+OffsetStrandPred  1   379.71      1952     2131.6 < 2.2e-16 ***
+ODM               1    21.72      1951     2109.8 3.153e-06 ***
+ATAC              1     0.17      1950     2109.7    0.6771    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Analysis of Deviance Table
+
+Model: binomial, link: logit
+
+Response: active
+
+Terms added sequentially (first to last)
+
+
+                 Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
+NULL                              1953     2511.3              
+OffsetPred        1   343.64      1952     2167.6 < 2.2e-16 ***
+ODM               1    21.13      1951     2146.5 4.290e-06 ***
+nt01              3    35.91      1948     2110.6 7.822e-08 ***
+nt02              3     3.94      1945     2106.7 0.2685405    
+nt03              3     2.81      1942     2103.8 0.4212749    
+nt04              3     3.43      1939     2100.4 0.3297721    
+nt05              3     4.96      1936     2095.5 0.1748621    
+nt06              3     9.77      1933     2085.7 0.0206154 *  
+nt07              3    13.79      1930     2071.9 0.0031987 ** 
+nt08              3    20.16      1927     2051.7 0.0001576 ***
+nt09              3    18.08      1924     2033.7 0.0004232 ***
+nt10              3    21.50      1921     2012.2 8.274e-05 ***
+nt11              3    39.94      1918     1972.2 1.096e-08 ***
+nt12              3    14.88      1915     1957.3 0.0019221 ** 
+nt13              3     7.08      1912     1950.2 0.0693655 .  
+nt14              3     8.26      1909     1942.0 0.0409343 *  
+nt15              3     7.63      1906     1934.4 0.0544292 .  
+nt16              3    18.47      1903     1915.9 0.0003516 ***
+nt17              3     2.18      1900     1913.7 0.5359740    
+nt18              3    12.04      1897     1901.7 0.0072475 ** 
+nt19              3     4.19      1894     1897.5 0.2415484    
+nt20              3    18.23      1891     1879.2 0.0003935 ***
+OffsetStrandPred  1    15.84      1890     1863.4 6.906e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Analysis of Deviance Table
+
+Model: binomial, link: logit
+
+Response: active
+
+Terms added sequentially (first to last)
+
+
+                 Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
+NULL                              1953     2511.3              
+OffsetStrandPred  1   379.71      1952     2131.6 < 2.2e-16 ***
+nt01              3    30.00      1949     2101.6 1.381e-06 ***
+nt02              3     5.06      1946     2096.5 0.1673262    
+nt03              3     1.69      1943     2094.8 0.6398705    
+nt04              3     4.10      1940     2090.7 0.2507208    
+nt05              3     5.63      1937     2085.1 0.1310422    
+nt06              3     6.96      1934     2078.1 0.0731869 .  
+nt07              3    11.59      1931     2066.5 0.0089181 ** 
+nt08              3    14.42      1928     2052.1 0.0023880 ** 
+nt09              3    13.21      1925     2038.9 0.0042050 ** 
+nt10              3    17.28      1922     2021.6 0.0006198 ***
+nt11              3    32.72      1919     1988.9 3.688e-07 ***
+nt12              3     9.18      1916     1979.7 0.0269560 *  
+nt13              3     5.56      1913     1974.2 0.1353699    
+nt14              3     8.21      1910     1966.0 0.0418020 *  
+nt15              3     4.67      1907     1961.3 0.1979895    
+nt16              3    17.42      1904     1943.9 0.0005801 ***
+nt17              3     1.09      1901     1942.8 0.7784142    
+nt18              3    11.50      1898     1931.3 0.0093070 ** 
+nt19              3     4.36      1895     1926.9 0.2253364    
+nt20              3    15.13      1892     1911.8 0.0017052 ** 
+ODM               1    40.58      1891     1871.2 1.889e-10 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

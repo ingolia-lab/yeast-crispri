@@ -86,4 +86,27 @@ else
     echo "\"${WORKDIR}/nizm005-yorf-deseq.csv\" exists, skipping analyze_fitness.R"
 fi
 
+if [[ -e "${WORKDIR}/sequence-good-odms.txt" ]];
+then
+    echo "Skipping ODM accessibility scoring"
+else
+    if [[ -e "${WORKDIR}/GSE141051_ODM-seq_map.bedgraph" ]];
+    then
+        echo "Skipping download of GSE14105"
+    else
+        curl 'https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE141051&format=file&file=GSE141051%5FODM%2Dseq%5Fmap%2Ebedgraph%2Egz' \
+	   > "${WORKDIR}/GSE141051_ODM-seq_map.bedgraph.gz"
+        
+        gunzip "${WORKDIR}/GSE141051_ODM-seq_map.bedgraph.gz"
+    fi
+    
+    cut -f2 "${GUIDEDIR}/sequence-good-targets.txt" \
+        | grep -v TargetLoc | grep -v chrM \
+			     > "${WORKDIR}/sequence-good-target-locs.txt"
+    cargo run --manifest-path ./odm_seq/Cargo.toml --bin odm_seq -- \
+	--bedgraph "${WORKDIR}/GSE141051_ODM-seq_map.bedgraph" \
+	--locations "${WORKDIR}/sequence-good-target-locs.txt" \
+	--output "${WORKDIR}/sequence-good-odms.txt"
+fi
+
 R --no-save < analyze_guides.R

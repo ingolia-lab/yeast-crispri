@@ -5,11 +5,17 @@ options(stringsAsFactors=FALSE)
 workdir <- Sys.getenv("WORKDIR")
 figuredir <- Sys.getenv("FIGUREDIR")
 
+log <- file(sprintf("%s/filter_ivt_out.txt", figuredir), "w")
+
 ## All barcodes
 counts <- read.delim(sprintf("%s/ivt_all.txt", workdir), row.names=1)
 ## Discard junk on column names
 colnames(counts) <- sub(".nbhd.count.txt", "", colnames(counts))
 colnames(counts) <- sub(".*[.]", "", colnames(counts))
+
+## Correlations for IVT and PCR
+cat(sprintf("IVT C vs IVT D, r = %0.2f\n", cor(counts$ivt_c, counts$ivt_d)), file=log)
+cat(sprintf("PCR C vs PCR D, r = %0.2f\n", cor(counts$pcr_c, counts$pcr_d)), file=log)
 
 ## Barcodes present in >1 sample and >32 reads total
 good <- counts[rowSums(counts > 0) > 1 & rowSums(counts) > 32,]
