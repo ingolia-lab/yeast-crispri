@@ -22,5 +22,6 @@ described in [McGlincy et al., 2019](ZZZ). This system comprises:
   - Multiple barcodes per guide provide independent measurements of
     guide effects
 
-  - Barcodes can be amplified by IVT, reducing noise
+  - Linear barcode amplification by in vitro transcription, reducing
+    noise relative to exponential PCR
 
