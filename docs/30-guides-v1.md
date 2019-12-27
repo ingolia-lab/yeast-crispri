@@ -21,7 +21,7 @@ information about target genes. In this table,
    is listed in the format below, which is very similar to the
    information in BED-format annotations:
 
-   _chromosome_:_start_-_end_(_strand_)
+   _chromosome_:_start-end_(_strand_)
 
    where:
    * _chromosome_ is the reference sequence name   
@@ -67,7 +67,7 @@ information about target genes. In this table,
 ## Degenerate guides
 
 A small fraction of guides are _degenerate_, meaning that they target
-a non-unique sequence that occurs in multiple places in the
+non-unique sequences that occur in multiple places in the
 genome. These degenerate guides have `DEGEN` in their *Guide*
 name. For these degenerate guides, the `sequence-good-targets.txt`
 table lists information about one genomic target location. The
