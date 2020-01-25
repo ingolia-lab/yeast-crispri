@@ -8,7 +8,7 @@ regarding effective guides for yeast CRISPRi using dCas9-Mxi.
 
 ## Guide-to-target assignments
 
-The [`library_v1/sequence-good-targets.txt`]() file provides a table
+The [`library_v1/sequence-good-targets.txt`](https://github.com/ingolia-lab/yeast-crispri/blob/master/library_v1/sequence-good-targets.txt) file provides a table
 of the 61,094 guides in the Ingolia lab v1 guide library, along with
 information about target genes. In this table,
 
@@ -71,7 +71,7 @@ non-unique sequences that occur in multiple places in the
 genome. These degenerate guides have `DEGEN` in their *Guide*
 name. For these degenerate guides, the `sequence-good-targets.txt`
 table lists information about one genomic target location. The
-[`library_v1/sequence-redundant-targets.txt`]() table gives similar
+[`library_v1/sequence-redundant-targets.txt`](https://github.com/ingolia-lab/yeast-crispri/blob/master/library_v1/sequence-redundant-targets.txt) table gives similar
 information about other genomic targets. The redundant targets table
 has the same information as the main table of good targets, and with
 an additional column *DegenGuide* that gives the guide name in the
