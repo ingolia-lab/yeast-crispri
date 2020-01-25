@@ -1,0 +1,2 @@
+IVT C vs IVT D, r = 0.98
+PCR C vs PCR D, r = 0.93

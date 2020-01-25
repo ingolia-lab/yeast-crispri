@@ -59,7 +59,7 @@ sui3$tstat <- times[match(row.names(sui3), row.names(times)), "tstat"]
 
 pal <- brewer.pal(7, "BrBG")
 
-pdf(sprintf("%s/sui3.pdf", figuredir), useDingbats=FALSE, width=4.5, height=3)
+pdf(sprintf("%s/sui3.pdf", figuredir), useDingbats=FALSE, width=3, height=3.5)
 plot(x=sui3$times + sui3$jitter, y=log10(pmax(10, sui3[,1])),
      pch=20, cex=1.5, col=ifelse(sui3$tstat == "L", pal[[1]], pal[[2]]),
      xlim=c(0,3.25*gensPerSampling), ylim=c(1, 3.5),
@@ -81,7 +81,7 @@ legend(x="topright", bty="n",
 
 dev.off()
 
-pdf(sprintf("%s/stv1.pdf", figuredir), useDingbats=FALSE, width=4.5, height=3)
+pdf(sprintf("%s/stv1.pdf", figuredir), useDingbats=FALSE, width=3, height=3.5)
 plot(x=stv1$times + stv1$jitter, y=log10(pmax(10, stv1[,1])),
      pch=20, cex=1.5, col=ifelse(stv1$tstat == "L", pal[[1]], pal[[2]]),
      xlim=c(0,3.25*gensPerSampling), ylim=c(1, 3.5),

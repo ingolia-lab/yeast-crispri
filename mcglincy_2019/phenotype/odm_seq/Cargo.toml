@@ -1,0 +1,15 @@
+[package]
+name = "odm_seq"
+version = "0.1.0"
+authors = ["Nick Ingolia <nick@ingolia.org>"]
+edition = "2018"
+
+[profile.dev]
+opt-level = 3
+
+[dependencies]
+bio-types = "*"
+clap = "*"
+csv = "*"
+failure = "*"
+serde = { version = "1", features = ["derive"] }
