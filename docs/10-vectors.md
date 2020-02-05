@@ -16,8 +16,8 @@ two-step process.
 
 Guide RNAs are introduced by digesting the pNTI661 vector with BamHI
 and HindIII, amplifying the guide RNA pool using primers NM636 and
-NM637, and performing Gibson assembly to introduce guide RNAs into the
-plasmid:
+NM637, and performing Gibson-style assembly (we like NEBuilder HiFi)
+to introduce guide RNAs into the plasmid:
 
 ```
 pNTI661     …cgcggctgggaacgaaactctgggagctgcgattgg/gatcctcgaagct/ttttagagctagaaatagcaagttaaaataaggctag…
@@ -32,11 +32,11 @@ NM637 reverse complement                                           gttttagagctag
 ```
 
 After the guide library is cloned and amplified, barcodes are
-introduced in a second Gibson assembly reaction. The library is
-digested with SphI, which leaves 3' overhangs that are not resected
-during the Gibson assembly reaction. The barcodes are amplified from a
-degenerate oligo template using primers that introduce the Illumina
-TruSeq Read 1 primer site and a T7 RNA polymerase promoter.
+introduced in a second Gibson-style assembly reaction. The library is
+digested with SphI, leaving 3' overhangs that are not resected during
+the assembly reaction. The barcodes are amplified from a degenerate
+oligo template using primers that introduce the Illumina TruSeq Read 1
+primer site and a T7 RNA polymerase promoter.
 
 ```
 pNTI661                                 …AGCTATCAGGCGCGCCACTTCACG/CATG/CTCAAGAGCTCGATCCGCAGGC…    
