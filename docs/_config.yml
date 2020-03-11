@@ -9,7 +9,7 @@ permalink:        pretty
 title:            Yeast CRISPRi
 tagline:          'Yeast CRISPRi'
 description:      'Ingolia lab CRISPRi libraries for budding yeast'
-url:              http://hyde.getpoole.com
+url:              https://ingolia-lab.github.io/yeast-crispri/
 baseurl:          /
 
 author:
