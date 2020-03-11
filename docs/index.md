@@ -7,7 +7,8 @@ title: Home
 
 This site is a resource for our system for genome-wide CRISPRi
 screening in budding yeast (_S. cerevisiae_), described in [McGlincy
-et al., 2019](ZZZ). This system comprises:
+et al., 2020](https://biorxiv.org/SUBMISSION-PENDING) (bioR&chi;iv
+submission pending) . This system comprises:
 
 * A guide RNA library with ten guides per gene for most genes
 
