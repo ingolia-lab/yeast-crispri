@@ -10,7 +10,7 @@ title:            Yeast CRISPRi
 tagline:          'Yeast CRISPRi'
 description:      'Ingolia lab CRISPRi libraries for budding yeast'
 url:              https://ingolia-lab.github.io/yeast-crispri/
-baseurl:          /
+baseurl:          https://ingolia-lab.github.io/yeast-crispri/
 
 author:
   name:           'Nicholas Ingolia'
