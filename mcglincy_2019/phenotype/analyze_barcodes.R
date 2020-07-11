@@ -57,12 +57,18 @@ sui3$times <- times[match(row.names(sui3), row.names(times)), "times"]
 sui3$jitter <- times[match(row.names(sui3), row.names(times)), "jitter"]
 sui3$tstat <- times[match(row.names(sui3), row.names(times)), "tstat"]
 
-pal <- brewer.pal(7, "BrBG")
+empty <- as.data.frame(t(cts[cts$guide == "Empty", grep("^d", colnames(cts))]))
+empty$times <- times[match(row.names(empty), row.names(times)), "times"]
+empty$jitter <- times[match(row.names(empty), row.names(times)), "jitter"]
+empty$tstat <- times[match(row.names(empty), row.names(times)), "tstat"]
 
-pdf(sprintf("%s/sui3.pdf", figuredir), useDingbats=FALSE, width=3, height=3.5)
+pal <- brewer.pal(7, "BrBG")
+palmore <- brewer.pal(7, "PRGn")
+
+pdf(sprintf("%s/sui3.pdf", figuredir), useDingbats=FALSE, width=3, height=4)
 plot(x=sui3$times + sui3$jitter, y=log10(pmax(10, sui3[,1])),
      pch=20, cex=1.5, col=ifelse(sui3$tstat == "L", pal[[1]], pal[[2]]),
-     xlim=c(0,3.25*gensPerSampling), ylim=c(1, 3.5),
+     xlim=c(0,3.25*gensPerSampling), ylim=c(1, 4),
      axes=FALSE,
      xlab="Pop Doublings", ylab="Read Count")
 
@@ -71,7 +77,7 @@ points(x=sui3$times + sui3$jitter+0.03, y=log10(pmax(10, sui3[,2])),
 
 axis(side=1, at=seq(0,12,4))
 
-axis(side=2, at=seq(1,3), labels=c("10", "100", "1k"))
+axis(side=2, at=seq(1,4), labels=c("10", "100", "1k", "10k"))
 axis(side=2, at=l10Decades(seq(1,3)), labels=F, tcl=-0.25)
 
 legend(x="topright", bty="n",
@@ -81,10 +87,10 @@ legend(x="topright", bty="n",
 
 dev.off()
 
-pdf(sprintf("%s/stv1.pdf", figuredir), useDingbats=FALSE, width=3, height=3.5)
+pdf(sprintf("%s/stv1.pdf", figuredir), useDingbats=FALSE, width=3, height=4)
 plot(x=stv1$times + stv1$jitter, y=log10(pmax(10, stv1[,1])),
      pch=20, cex=1.5, col=ifelse(stv1$tstat == "L", pal[[1]], pal[[2]]),
-     xlim=c(0,3.25*gensPerSampling), ylim=c(1, 3.5),
+     xlim=c(0,3.25*gensPerSampling), ylim=c(1, 4),
      axes=FALSE,
      xlab="Pop Doublings", ylab="Read Count")
 
@@ -93,8 +99,28 @@ points(x=stv1$times + stv1$jitter+0.03, y=log10(pmax(10, stv1[,2])),
 
 axis(side=1, at=seq(0,12,4))
 
-axis(side=2, at=seq(1,3), labels=c("10", "100", "1k"))
+axis(side=2, at=seq(1,4), labels=c("10", "100", "1k", "10k"))
 axis(side=2, at=l10Decades(seq(1,3)), labels=F, tcl=-0.25)
 
 dev.off()
 
+pdf(sprintf("%s/empty.pdf", figuredir), useDingbats=FALSE, width=3, height=4)
+
+plot(x=empty$times + empty$jitter, y=log10(pmax(10, empty[,2])),
+     pch=20, cex=1.5, col=ifelse(empty$tstat == "L", pal[[1]], pal[[2]]),
+     xlim=c(0,3.25*gensPerSampling), ylim=c(1, 4),
+     axes=FALSE,
+     xlab="Pop Doublings", ylab="Read Count")
+
+points(x=empty$times + empty$jitter+0.03, y=log10(pmax(10, empty[,3])),
+       pch=20, cex=1.5, col=ifelse(empty$tstat == "L", pal[[7]], pal[[6]]))
+
+points(x=empty$times + empty$jitter+0.03, y=log10(pmax(10, empty[,4])),
+       pch=20, cex=1.5, col=ifelse(empty$tstat == "L", palmore[[1]], palmore[[2]]))
+
+axis(side=1, at=seq(0,12,4))
+
+axis(side=2, at=seq(1,4), labels=c("10", "100", "1k", "10k"))
+axis(side=2, at=l10Decades(seq(1,3)), labels=F, tcl=-0.25)
+
+dev.off()
