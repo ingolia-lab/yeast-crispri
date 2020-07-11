@@ -109,4 +109,9 @@ else
 	--output "${WORKDIR}/sequence-good-odms.txt"
 fi
 
-R --no-save < analyze_guides.R
+if [[ ! -e "${FIGUREDIR}/analyze_guides_out.txt" ]];
+then
+    R --no-save < analyze_guides.R
+else
+    echo "\"${FIGUREDIR}/analyze_guides_out.txt\" exists, skipping analyze_guides.R"    
+fi
