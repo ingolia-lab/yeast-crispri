@@ -79,6 +79,13 @@ else
     echo "\"${FIGUREDIR}/nizm005-guide-deseq.csv\" exists, skipping deseq_barcodes.R"
 fi
 
+if [[ ! -e "${FIGUREDIR}/compare_out.txt" ]];
+then
+    R --no-save < compare.R
+else
+    echo "\"${FIGUREDIR}/compare_out.txt\" exists, skipping compare.R"
+fi
+
 if [[ ! -e "${WORKDIR}/nizm005-yorf-deseq.csv" ]];
 then
     R --no-save < analyze_fitness.R

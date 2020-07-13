@@ -1,0 +1,8 @@
+Comparing barcode pairs at >= 64 reads  Using 6987 barcode pairs  Correlation = 0.786
+Comparing barcode pairs at >= 128 reads  Using 3754 barcode pairs  Correlation = 0.838
+Comparing barcode pairs at >= 256 reads  Using 1376 barcode pairs  Correlation = 0.898
+Comparing barcode pairs at >= 512 reads  Using 277 barcode pairs  Correlation = 0.913
+Comparing turbidostats at >= 64 reads  Using 52827 barcodes  Correlation = 0.606
+Comparing turbidostats at >= 128 reads  Using 33202 barcodes  Correlation = 0.703
+Comparing turbidostats at >= 256 reads  Using 16124 barcodes  Correlation = 0.795
+Comparing turbidostats at >= 512 reads  Using 5357 barcodes  Correlation = 0.863
