@@ -3,8 +3,8 @@ options(stringsAsFactors=FALSE)
 library(png)
 library("RColorBrewer")
 
-workdir <- "work" ## Sys.getenv("WORKDIR")
-figuredir <- "figures" ## Sys.getenv("FIGUREDIR")
+workdir <- Sys.getenv("WORKDIR")
+figuredir <- Sys.getenv("FIGUREDIR")
 
 log <- file(sprintf("%s/replicates_out.txt", figuredir), "w")
 
