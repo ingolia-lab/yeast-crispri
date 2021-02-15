@@ -1,0 +1,12 @@
+44777 barcodes present in both replicates
+    Correlation 0.613 between replicates
+23200 guides for barcodes present in both replicates
+    Correlation 0.683 between replicates
+92253 barcodes in left replicate
+31226 guides in left replicate
+84080 barcodes in right replicate
+29715 guides in right replicate
+29715 guides in left / right intersection
+    Correlation 0.690 between guides
+11611 guides with >1 barcode in left / right intersection
+    Correlation 0.833 between guides
