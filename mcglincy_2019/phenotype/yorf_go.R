@@ -1,6 +1,6 @@
 options(stringsAsFactors=FALSE)
 
-workdir <- "work" ## Sys.getenv("WORKDIR")
+workdir <- Sys.getenv("WORKDIR")
 
 yorfs <- read.csv(sprintf("%s/nizm005-yorf-deseq.csv", workdir))
 

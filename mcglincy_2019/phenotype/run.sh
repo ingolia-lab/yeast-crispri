@@ -86,6 +86,13 @@ else
     echo "\"${FIGUREDIR}/replicates_out.txt\" exists, skipping replicate_guides.R"
 fi
 
+if [[ ! -e "${WORKDIR}/yorf-lfcmin-via.txt" ]];
+then
+    R --no-save < yorf_go.R
+else
+    echo "\"${WORKDIR}/yorf-lfcmin-via.txt\" exists, skipping yorf_go.R"
+fi
+
 if [[ ! -e "${FIGUREDIR}/compare_out.txt" ]];
 then
     R --no-save < compare.R
