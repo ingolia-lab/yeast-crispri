@@ -2,7 +2,6 @@ options(stringsAsFactors=FALSE)
 
 library(png)
 library("RColorBrewer")
-library("DESeq2")
 
 guidedir <- Sys.getenv("GUIDEDIR")
 barcodingdir <- Sys.getenv("BARCODINGDIR")
@@ -69,6 +68,40 @@ guideres <- guideres[,c("lfcMean", "lfcSE", "nbc", "Gene1", "Yorf1", "Offset1", 
                         "Yorf2", "Offset2", "StartType2", "Yorfs", "TargetLoc", "Oligo")]
 
 write.csv(guideres, file=sprintf("%s/nizm005-guide-deseq.csv", figuredir))
+
+ctsboth <- cts[cts$d0L1 > 64 & cts$d0R1 > 64,]
+
+condl <- cond[cond$tstat == "L",]
+ddsl <- DESeqDataSetFromMatrix(countData = ctsboth[,row.names(condl)],
+                               colData = condl,
+                               design = ~ gens)
+ddsl <- estimateSizeFactors(ddsl)
+ddsl <- estimateDispersions(ddsl)
+ddsl <- nbinomWaldTest(ddsl, betaPrior=FALSE)
+
+gensl <- results(ddsl, name="gens")
+gensl <- as.data.frame(gensl)
+
+gensl$guide <- ctsboth$guide
+
+condr <- cond[cond$tstat == "R",]
+ddsr <- DESeqDataSetFromMatrix(countData = ctsboth[,row.names(condr)],
+                               colData = condr,
+                               design = ~ gens)
+ddsr <- estimateSizeFactors(ddsr)
+ddsr <- estimateDispersions(ddsr)
+ddsr <- nbinomWaldTest(ddsr, betaPrior=FALSE)
+
+gensr <- results(ddsr, name="gens")
+gensr <- as.data.frame(gensr)
+
+gensr$guide <- ctsboth$guide
+
+gensboth <- cbind.data.frame(gensl, gensr)
+
+write.csv(gensl, file=sprintf("%s/nizm005-barcode-deseq-left.csv", workdir))
+write.csv(gensr, file=sprintf("%s/nizm005-barcode-deseq-right.csv", workdir))
+write.csv(gensboth, file=sprintf("%s/nizm005-barcode-deseq-compare.csv", workdir))
 
 ## DESeq2 estimates are log2 fold-change in 1 (wild-type) generation
 ## selective coefficient s is 2^(log2 fold-change)

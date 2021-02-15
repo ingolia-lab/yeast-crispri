@@ -79,6 +79,20 @@ else
     echo "\"${FIGUREDIR}/nizm005-guide-deseq.csv\" exists, skipping deseq_barcodes.R"
 fi
 
+if [[ ! -e "${FIGUREDIR}/replicates_out.txt" ]];
+then
+    R --no-save < replicate_guides.R
+else
+    echo "\"${FIGUREDIR}/replicates_out.txt\" exists, skipping replicate_guides.R"
+fi
+
+if [[ ! -e "${FIGUREDIR}/compare_out.txt" ]];
+then
+    R --no-save < compare.R
+else
+    echo "\"${FIGUREDIR}/compare_out.txt\" exists, skipping compare.R"
+fi
+
 if [[ ! -e "${WORKDIR}/nizm005-yorf-deseq.csv" ]];
 then
     R --no-save < analyze_fitness.R
@@ -109,4 +123,9 @@ else
 	--output "${WORKDIR}/sequence-good-odms.txt"
 fi
 
-R --no-save < analyze_guides.R
+if [[ ! -e "${FIGUREDIR}/analyze_guides_out.txt" ]];
+then
+    R --no-save < analyze_guides.R
+else
+    echo "\"${FIGUREDIR}/analyze_guides_out.txt\" exists, skipping analyze_guides.R"    
+fi
