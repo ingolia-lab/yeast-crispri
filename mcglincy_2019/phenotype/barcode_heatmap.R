@@ -69,12 +69,26 @@ rowcolors <- guide[match(bc$guide, row.names(guide)), "colorstr"]
 
 relcolor <- colorRampPalette(brewer.pal(9, "PRGn"))(100)
 
+zrange <- 3*3.75
+
 pdf(sprintf("%s/barcode_heatmap_both.pdf", figuredir), useDingbats=FALSE)
 heatmap(relcts,
         Rowv=NA, Colv=NA, labRow=NA,
         scale="none",
-        zlim=c(-3*3.75,3*3.75), col=relcolor,
+        zlim=c(-zrange, zrange), col=relcolor,
         RowSideColors=rowcolors)
+dev.off()
+
+pdf(sprintf("%s/barcode_heatmap_scale.pdf", figuredir), useDingbats=FALSE, width=6, height=2)
+scale <- (length(relcolor) - 1) / (2 * zrange)
+plot(c(-zrange, zrange), c(0, 10), type='n', bty='n', xaxt='n', xlab='', yaxt='n', ylab='', main='')
+axis(1, at=log2(10**seq(-3,3)),
+     labels=c("1/1000", "1/100", "1/10", "1", "10", "100", "1000"),
+     las=1, lwd=0, lwd.ticks=1)
+for (i in 1:(length(relcolor)-1)) {
+    x = (i-1)/scale + (-zrange)
+    rect(x, 0, x+1/scale, 10, col=relcolor[i], border=NA)
+}
 dev.off()
 
 ## pdf(sprintf("%s/barcode_heatmap_left.pdf", figuredir), useDingbats=FALSE)
